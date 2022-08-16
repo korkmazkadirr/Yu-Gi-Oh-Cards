@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Yu_Gi_Oh_Cards.Models;
+using System.Text;
+
 
 namespace Yu_Gi_Oh_Cards.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    : base(options)
+        {
+        }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Foto> Foto { get; set; }
         public DbSet<Kampanya> Kampanya { get; set; }
@@ -25,9 +30,6 @@ namespace Yu_Gi_Oh_Cards.Data
         public DbSet<Urun> Urun { get; set; }
 
         public DbSet<IndirimliUrunler> IndirimliUrunler { get; set; }
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
-        {
-        }
+
     }
 }
